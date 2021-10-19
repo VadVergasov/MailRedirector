@@ -1,0 +1,11 @@
+TOKEN = "{int}:{str}"  # Telegram bot token
+LOGIN = "{str}"  # Login (email address)
+PASSWORD = "{str}"  # Password for account
+SERVER = "{str}"  # IMAP server
+HELP = "{str}"
+STOP = "{str}"
+COMMANDS = {
+    "start": "{str}",
+    "help": "{str}",
+    "stop": "{str}",
+}

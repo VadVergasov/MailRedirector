@@ -1,0 +1,10 @@
+*
+
+!/.gitignore
+!*.py
+!*.txt
+!LICENSE
+!*.md
+!*.template
+
+config.py

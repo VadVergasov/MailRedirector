@@ -1,0 +1,10 @@
+[Unit]
+Description=Mail Redirector bot timer to check for updates
+
+[Timer]
+OnUnitActiveSec=30s
+OnBootSec=30s
+
+[Install]
+WantedBy=timers.target
+WantedBy=mailredirector.service

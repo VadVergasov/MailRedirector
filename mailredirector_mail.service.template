@@ -1,0 +1,13 @@
+[Unit]
+Description=Mail Redirector bot service to check for updates
+PartOf=mailredirector.service
+After=mailredirector.service
+
+[Service]
+Type=oneshot
+User={str}
+WorkingDirectory={str}
+ExecStart={str}/env/bin/python3 {str}/mail.py
+
+[Install]
+WantedBy=mailredirector.service

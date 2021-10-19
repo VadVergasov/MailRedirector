@@ -1,0 +1,12 @@
+[Unit]
+Description=MailRedirector
+
+[Service]
+User={str}
+Type=oneshot
+ExecStart=/bin/true
+RemainAfterExit=yes
+WorkingDirectory={str}
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,15 @@
+[Unit]
+Description=Mail Redirector bot service to work with Telegram
+PartOf=mailredirector.service
+After=mailredirector.service
+
+[Service]
+User={str}
+WorkingDirectory={str}
+ExecStart={str}/env/bin/python3 {str}/telegram.py
+StartLimitIntervalSec=5
+StartLimitBurst=1
+Restart=on-failure
+
+[Install]
+WantedBy=mailredirector.service
