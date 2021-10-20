@@ -1,7 +1,8 @@
+import logging
+
 import telebot
 import ujson as json
 
-import logging
 import config
 
 BOT = telebot.TeleBot(config.TOKEN)
