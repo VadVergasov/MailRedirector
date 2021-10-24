@@ -12,7 +12,6 @@ logging.basicConfig(
     filename="mail.log",
     format="%(asctime)s - %(levelname)s: %(message)s",
     level=logging.INFO,
-    encoding="utf8",
 )
 
 BOT = telebot.TeleBot(config.TOKEN)
@@ -61,29 +60,9 @@ with MailBox(config.SERVER).login(
                 fp.write(att.payload)
 
             if len(attachments) == 0:
-                splitted_text = telebot.util.smart_split(
-                    message_text, chars_per_string=1000
-                )
-                if len(splitted_text) > 1:
-                    attachments.append(
-                        telebot.types.InputMediaDocument(
-                            open(att_path, "rb"),
-                            caption=splitted_text[0] + "```",
-                            parse_mode="MARKDOWN",
-                        )
-                    )
-                else:
-                    attachments.append(
-                        telebot.types.InputMediaDocument(
-                            open(att_path, "rb"),
-                            caption=splitted_text[0],
-                            parse_mode="MARKDOWN",
-                        )
-                    )
+                attachments.append(att_path)
             else:
-                attachments.append(
-                    telebot.types.InputMediaDocument(open(att_path, "rb"))
-                )
+                attachments.append(att_path)
         logging.info(message_text)
         logging.info(len(attachments))
         logging.info("Sending message")
@@ -99,7 +78,22 @@ with MailBox(config.SERVER).login(
                 else:
                     BOT.send_message(chat_id, splitted_text[0], parse_mode="MARKDOWN")
             else:
-                BOT.send_media_group(chat_id, attachments)
+                splitted_text = telebot.util.smart_split(
+                    message_text, chars_per_string=1000
+                )
+                media_group = []
+                for pth in attachments:
+                    if len(media_group) == 0:
+                        media_group.append(
+                            telebot.types.InputMediaDocument(
+                                open(pth, "rb"), caption=splitted_text[0] + "\n```"
+                            )
+                        )
+                    else:
+                        media_group.append(
+                            telebot.types.InputMediaDocument(open(pth, "rb"))
+                        )
+                BOT.send_media_group(chat_id, media_group)
             for text in splitted_text[1:-1]:
                 BOT.send_message(chat_id, "```\n" + text + "```", parse_mode="MARKDOWN")
             if len(splitted_text) > 1:
