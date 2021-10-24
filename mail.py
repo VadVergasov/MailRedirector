@@ -2,9 +2,9 @@ import logging
 import os
 
 import html2text
-from imap_tools import MailBox, AND
 import telebot
 import ujson as json
+from imap_tools import AND, MailBox
 
 import config
 
