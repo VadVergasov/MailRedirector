@@ -25,7 +25,7 @@ try:
         config.LOGIN, config.PASSWORD, initial_folder="Inbox"
     ) as mailbox:
         week_ago = datetime.date.today() - datetime.timedelta(days=7)
-        for msg in mailbox.fetch(AND(date_lt=week_ago), bulk=True):
+        for msg in mailbox.fetch(AND(date_gte=week_ago), bulk=True):
             if int(msg.uid) <= int(INFO["latest"]):
                 continue
             logging.info("Fetching unseen messages: %s", str(msg.uid))
