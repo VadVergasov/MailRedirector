@@ -14,7 +14,7 @@ logging.basicConfig(
     level=logging.INFO,
 )
 
-BOT = telebot.TeleBot(config.TOKEN)
+BOT = telebot.TeleBot(config.TOKEN, parse_mode="MARKDOWN")
 
 with open("config.json", "r", encoding="utf8") as fp:
     INFO = json.load(fp)
@@ -73,7 +73,7 @@ with MailBox(config.SERVER).login(
                 )
                 if len(splitted_text) > 1:
                     BOT.send_message(
-                        chat_id, splitted_text[0] + "````", parse_mode="MARKDOWN"
+                        chat_id, splitted_text[0] + "\n```", parse_mode="MARKDOWN"
                     )
                 else:
                     BOT.send_message(chat_id, splitted_text[0], parse_mode="MARKDOWN")
@@ -84,18 +84,31 @@ with MailBox(config.SERVER).login(
                 media_group = []
                 for pth in attachments:
                     if len(media_group) == 0:
-                        media_group.append(
-                            telebot.types.InputMediaDocument(
-                                open(pth, "rb"), caption=splitted_text[0] + "\n```"
+                        if len(splitted_text) == 1:
+                            media_group.append(
+                                telebot.types.InputMediaDocument(
+                                    open(pth, "rb"),
+                                    caption=splitted_text[0],
+                                    parse_mode="MARKDOWN",
+                                )
                             )
-                        )
+                        else:
+                            media_group.append(
+                                telebot.types.InputMediaDocument(
+                                    open(pth, "rb"),
+                                    caption=splitted_text[0] + "\n```",
+                                    parse_mode="MARKDOWN",
+                                )
+                            )
                     else:
                         media_group.append(
                             telebot.types.InputMediaDocument(open(pth, "rb"))
                         )
                 BOT.send_media_group(chat_id, media_group)
             for text in splitted_text[1:-1]:
-                BOT.send_message(chat_id, "```\n" + text + "```", parse_mode="MARKDOWN")
+                BOT.send_message(
+                    chat_id, "```\n" + text + "\n```", parse_mode="MARKDOWN"
+                )
             if len(splitted_text) > 1:
                 BOT.send_message(
                     chat_id, "```\n" + splitted_text[-1], parse_mode="MARKDOWN"
