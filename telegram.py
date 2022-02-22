@@ -8,8 +8,9 @@ import config
 BOT = telebot.TeleBot(config.TOKEN)
 logging.basicConfig(
     filename="telegram.log",
-    format="%(asctime)s - %(levelname)s: %(message)s",
+    format="%(asctime)s - %(levelname)s - %(funcName)s() - %(lineno)d: %(message)s",
     level=logging.INFO,
+    encoding="utf8",
 )
 
 with open("config.json", "r", encoding="utf8") as fp:

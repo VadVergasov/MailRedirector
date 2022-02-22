@@ -11,8 +11,9 @@ import config
 
 logging.basicConfig(
     filename="mail.log",
-    format="%(asctime)s - %(levelname)s: %(message)s",
+    format="%(asctime)s - %(levelname)s - %(funcName)s() - %(lineno)d: %(message)s",
     level=logging.INFO,
+    encoding="utf8",
 )
 
 BOT = telebot.TeleBot(config.TOKEN, parse_mode="MARKDOWN")
