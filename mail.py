@@ -38,10 +38,12 @@ try:
             title_text = title_text.replace("_", "\\_")
             title_text = title_text.replace("`", "\\`")
             title_text = title_text.replace("[", "\\[")
+            title_text = title_text.replace("||", "\\|\\|")
             from_text = from_text.replace("*", "\\*")
             from_text = from_text.replace("_", "_\\__")
             from_text = from_text.replace("`", "\\`")
             from_text = from_text.replace("[", "\\[")
+            from_text = from_text.replace("||", "\\|\\|")
 
             # Text of message
             message_text = "_" + from_text + "_\n*" + title_text + "*\n"
