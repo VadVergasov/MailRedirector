@@ -1,4 +1,4 @@
-astroid==2.9.3
+astroid==2.10.0
 black==22.1
 certifi==2021.5.30
 charset-normalizer==2.0.6
