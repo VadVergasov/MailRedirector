@@ -2,7 +2,7 @@ astroid==2.9.3
 black==22.1
 certifi==2021.5.30
 charset-normalizer==2.0.6
-click==8.0.1
+click==8.0.4
 colorama==0.4.4
 html2text==2020.1.16
 idna==3.2
