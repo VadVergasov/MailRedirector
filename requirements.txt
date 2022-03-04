@@ -6,7 +6,7 @@ click==8.0.4
 colorama==0.4.4
 html2text==2020.1.16
 idna==3.2
-imap-tools==0.49.1
+imap-tools==0.51.1
 isort==5.10.1
 lazy-object-proxy==1.7.1
 mccabe==0.6.1
