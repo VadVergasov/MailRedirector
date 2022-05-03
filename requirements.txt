@@ -24,4 +24,4 @@ tomli==2.0.1
 typing_extensions==4.2.0
 ujson==5.2.0
 urllib3==1.26.9
-wrapt==1.14.0
+wrapt==1.14.1
