@@ -8,7 +8,7 @@ dill==0.3.6
 html2text==2020.1.16
 idna==3.2
 imap-tools==1.0.0
-isort==5.11.3
+isort==5.11.4
 lazy-object-proxy==1.8.0
 mccabe==0.6.1
 mypy-extensions==0.4.3
