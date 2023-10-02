@@ -15,7 +15,7 @@ mypy-extensions==1.0.0
 packaging==23.1
 pathspec==0.11.2
 platformdirs==3.10.0
-pylint==2.17.6
+pylint==2.17.7
 pyTelegramBotAPI==4.14.0
 regex==2023.8.8
 requests==2.31.0
