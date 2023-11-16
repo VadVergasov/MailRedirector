@@ -7,7 +7,7 @@ colorama==0.4.6
 dill==0.3.7
 html2text==2020.1.16
 idna==3.4
-imap-tools==1.4.0
+imap-tools==1.5.0
 isort==5.12.0
 lazy-object-proxy==1.9.0
 mccabe==0.7.0
